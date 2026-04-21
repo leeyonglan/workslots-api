@@ -31,7 +31,6 @@
 **响应示例:**
 ```json
 {
-  "activity_name": "世界杯竞猜",
   "start_time": "2024-06-14 00:00:00",
   "end_time": "2024-07-14 23:59:59",
   "min_bet": 100,
@@ -39,8 +38,7 @@
   "bet_gold": 1,
   "get_reward_type": 0,
   "mail_subject": "世界杯奖励",
-  "mail_body": "恭喜您获得世界杯竞猜奖励",
-  "description": "世界杯活动描述"
+  "mail_body": "恭喜您获得世界杯竞猜奖励"
 }
 ```
 
@@ -54,7 +52,6 @@
 
 | 字段名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| activity_name | string | 否 | 活动名称 |
 | start_time | string | 否 | 开始时间 |
 | end_time | string | 否 | 结束时间 |
 | min_bet | int64 | 否 | 最低投注金额 |
@@ -63,7 +60,6 @@
 | get_reward_type | int | 否 | 获取奖励类型 0过期作废 1邮件奖励 |
 | mail_subject | string | 否 | 邮件主题 |
 | mail_body | string | 否 | 邮件内容 |
-| description | string | 否 | 活动描述 |
 
 ---
 
