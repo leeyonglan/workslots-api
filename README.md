@@ -1,0 +1,2 @@
+# workslots-api
+slots game
