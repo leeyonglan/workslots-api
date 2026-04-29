@@ -107,7 +107,7 @@ Excel 文件需要包含以下命名的 sheet：
       "home": 1,
       "away": 2,
       "mark": "揭幕战",
-      "status": 0,
+      "status": 0, // 0未开始 1进行中 2已结束
       "home_score": 0,
       "away_score": 0,
       "created_at": "2024-05-01T00:00:00Z",
