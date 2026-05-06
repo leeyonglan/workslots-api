@@ -3,7 +3,33 @@
 
 ## 1. Excel配置导入
 
-### 1.1 上传Excel配置
+### 1.1 下载导入模板
+
+**接口地址:** `/admin/worldcup/downloadImportTemp`
+
+**请求方法:** GET
+
+**请求参数:** 无
+
+**响应:** Excel 文件（二进制流）
+
+**Excel 结构说明:**
+
+模板包含以下命名的 sheet，每个 sheet 包含表头和一行示例数据：
+
+| sheet名 | 说明 | 字段 |
+|---------|------|------|
+| countries | 国家/球队 | id, name, cnname |
+| matches | 赛事 | id, date, time, stage, group, home, away, mark |
+| stages | 赛段 | id, name, cnname |
+| groups | 分组 | id, name |
+| class1 | 玩法一级分类 | id, name |
+| class2 | 玩法二级分类 | id, name, parent |
+| matchodds | 竞彩赔率 | id, matchid, class2, odds, class1 |
+
+---
+
+### 1.2 上传Excel配置
 
 **接口地址:** `/admin/worldcup/uploadSubmit`
 
