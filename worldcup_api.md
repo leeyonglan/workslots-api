@@ -150,7 +150,7 @@ Excel 文件需要包含以下命名的 sheet：
 
 ## 4. 赔率管理
 
-### 4.1 获取赔率列表
+### 4.1 获取赔率列表（按一级分类分组）
 
 **接口地址:** `/admin/worldcup/odds/list`
 
@@ -160,29 +160,64 @@ Excel 文件需要包含以下命名的 sheet：
 
 | 字段名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| page | int | 否 | 页码，默认1 |
-| limit | int | 否 | 每页数量，默认10 |
 | match_id | int64 | 否 | 赛事ID，用于筛选 |
+
+**注意:** 该接口已移除分页功能，赔率数据按一级分类（class1）分组返回
 
 **响应示例:**
 ```json
 {
-  "total": 100,
-  "curr": 1,
-  "limit": 10,
   "list": [
     {
-      "id": 1,
-      "matchid": 1,
-      "class1": 1,
-      "class2": 1,
-      "odds": 1.8,
-      "recommend": 0,
-      "is_win": 0,
-      "created_at": "2024-05-01T00:00:00Z",
-      "updated_at": "2024-05-01T00:00:00Z",
+      "class1_id": 1,
       "class1_name": "胜平负",
-      "class2_name": "主胜"
+      "odds_list": [
+        {
+          "id": 1,
+          "matchid": 1,
+          "class1": 1,
+          "class2": 1,
+          "odds": 1.8,
+          "recommend": 0,
+          "is_win": 0,
+          "created_at": "2024-05-01T00:00:00Z",
+          "updated_at": "2024-05-01T00:00:00Z",
+          "class1_name": "胜平负",
+          "class2_name": "主胜"
+        },
+        {
+          "id": 2,
+          "matchid": 1,
+          "class1": 1,
+          "class2": 2,
+          "odds": 3.4,
+          "recommend": 0,
+          "is_win": 0,
+          "created_at": "2024-05-01T00:00:00Z",
+          "updated_at": "2024-05-01T00:00:00Z",
+          "class1_name": "胜平负",
+          "class2_name": "平局"
+        }
+      ]
+    },
+    {
+      "class1_id": 2,
+      "class1_name": "让球",
+      "odds_list": [
+        {
+          "id": 3,
+          "matchid": 1,
+          "class1": 2,
+          "class2": 4,
+          "odds": 1.9,
+          "recommend": 1,
+          "is_win": 0,
+          "created_at": "2024-05-01T00:00:00Z",
+          "updated_at": "2024-05-01T00:00:00Z",
+          "class1_name": "让球",
+          "class2_name": "让球主胜"
+        }
+      ]
     }
   ]
 }
