@@ -77,7 +77,8 @@ Excel 文件需要包含以下命名的 sheet：
   "bet_gold": 1,
   "get_reward_type": 0,
   "mail_subject": "世界杯奖励",
-  "mail_body": "恭喜您获得世界杯竞猜奖励"
+  "mail_body": "恭喜您获得世界杯竞猜奖励",
+  "api_secret": "your_api_secret"
 }
 ```
 
@@ -99,6 +100,7 @@ Excel 文件需要包含以下命名的 sheet：
 | get_reward_type | int | 否 | 获取奖励类型 0过期作废 1邮件奖励 |
 | mail_subject | string | 否 | 邮件主题 |
 | mail_body | string | 否 | 邮件内容 |
+| api_secret | string | 否 | API密钥 |
 
 ---
 
@@ -127,21 +129,23 @@ Excel 文件需要包含以下命名的 sheet：
     {
       "id": 1,
       "date": "2024-06-14",
-      "time": "2024-06-14T21:00:00Z",
+      "time": "21:00",
       "stage": 1,
       "group": 1,
       "home": 1,
       "away": 2,
       "mark": "揭幕战",
-      "status": 0, // 0未开始 1进行中 2已结束
+      "extra_id": "80d82d1113934bfbea4ce8daf37a2433",
+      "status": 0,
       "home_score": 0,
       "away_score": 0,
-      "created_at": "2024-05-01T00:00:00Z",
-      "updated_at": "2024-05-01T00:00:00Z",
+      "created_at": "2024-05-01 00:00:00",
+      "updated_at": "2024-05-01 00:00:00",
       "stage_name": "小组赛",
       "group_name": "A组",
       "home_name": "德国",
-      "away_name": "苏格兰"
+      "away_name": "苏格兰",
+      "api_update_str": "sync time:2024-06-14 21:30:00"
     }
   ]
 }
@@ -274,6 +278,8 @@ Excel 文件需要包含以下命名的 sheet：
 | home_score | int | 是 | 主队得分 |
 | away_score | int | 是 | 客队得分 |
 | status | int | 是 | 比赛状态，0未开始 1进行中 2已结束 |
+
+**注意:** 设置比分后会自动根据最终比分计算该赛事所有竞猜项的胜负结果（通过 `CalcClass2Win` 函数），并更新到 `worldcup.odds` Redis 中。
 
 ---
 
